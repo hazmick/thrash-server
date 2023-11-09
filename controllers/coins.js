@@ -13,7 +13,7 @@ exports.createCharge = async (req, res) => {
   cors(req, res, async () => {  
     const chargeData = {
       name: "$20 Membership fee",
-      description: "One-Time $20 Membership fee for first time Hazmick members ",
+      description: "One-Time $20 Membership fee for first time Titanmarketfx members ",
       local_price: {
         amount: 20.0,
         currency: "USD", 
