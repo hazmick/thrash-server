@@ -6,7 +6,7 @@ const cors = require('cors');
 
 connection;
 
-const allowedorigins = ['http://localhost:3000', 'http://192.168.0.100:3000', 'http://172.20.10.4:3000', 'http://localhost:5000', 'https://tbxxx.vercel.app'];
+const allowedorigins = ['http://localhost:3000', 'http://192.168.0.100:3000', 'http://172.20.10.4:3000', 'http://localhost:5000', 'https://tbxxx.vercel.app', 'https://www.titanmarketfx.com', 'https://titanmarketfx.com' ];
 const app = express();
 
 app.use(express.json());
