@@ -6,7 +6,7 @@ const cors = require('cors');
 
 connection;
 
-const allowedorigins = ['http://localhost:3000', 'http://192.168.0.100:3000', 'http://172.20.10.4:3000', 'http://localhost:5000', 'https://hazmick.xyz', 'https://kehopac.onrender.com', 'https://kehopac.vercel.app', 'https://www.hazmick.xyz'];
+const allowedorigins = ['http://localhost:3000', 'http://192.168.0.100:3000', 'http://172.20.10.4:3000', 'http://localhost:5000', 'https://tbxxx.vercel.app'];
 const app = express();
 
 app.use(express.json());
