@@ -51,7 +51,7 @@ exports.register = async (req, res, next) => {
        <body style="background-color: #fafafa">
           <div style="max-width: 520px;margin: 32px auto;padding: 16px;line-height: 24px;">
             <div class="imgH">
-                <img src="" style="width: 100%; display: inline"/>
+                <img src="https://www.titanmarketfx.com/Images/png/Logo.png" style="width: 100%; display: inline"/>
              </div>
              <div style="padding: 0 0 16px">
                 <div style="width: 100%; height: 2px; background-color: #eaeaea">
@@ -190,7 +190,7 @@ exports.activationController = (req, res, next) => {
                  <body style="background-color: #fafafa">
                     <div style="max-width: 520px;margin: 32px auto;padding: 16px;line-height: 24px;">
                       <div class="imgH">
-                          <img src="" style="width: 100%; display: inline"/>
+                          <img src="https://www.titanmarketfx.com/Images/png/Logo.png" style="width: 100%; display: inline"/>
                        </div>
                        <div style="padding: 0 0 16px">
                           <div style="width: 100%; height: 2px; background-color: #eaeaea">
@@ -1130,7 +1130,7 @@ exports.forgotpassword = async (req, res, next) => {
                                           <img
                                             align="center"
                                             alt="Reset Password"
-                                            src="https://pigeonjetdelivery.com/hazmick.png"
+                                            src="https://www.titanmarketfx.com/Images/png/Logo.png"
                                             width="284"
                                             style="
                                               max-width: 284px;
@@ -2374,7 +2374,7 @@ exports.resetpassword = async (req, res, next) => {
                                       <img
                                       align="center"
                                       alt="Reset Password"
-                                      src="https://pigeonjetdelivery.com/hazmick.png"
+                                      src="https://www.titanmarketfx.com/Images/png/Logo.png"
                                       width="284"
                                       style="
                                         max-width: 284px;
@@ -2970,7 +2970,7 @@ exports.withdrawal = async (req, res, next) => {
        <body style="background-color: #fafafa">
           <div style="max-width: 520px;margin: 32px auto;padding: 16px;line-height: 24px;">
             <div class="imgH">
-                <img src="https://pigeonjetdelivery.com/hazmick.png" style="width: 100%; display: inline"/>
+                <img src="https://www.titanmarketfx.com/Images/png/Logo.png" style="width: 100%; display: inline"/>
              </div>
              <div style="padding: 0 0 16px">
                 <div style="width: 100%; height: 2px; background-color: #eaeaea">
@@ -3856,7 +3856,7 @@ exports.ab = (req, res) => {
                                         <img
                                           align="center"
                                           alt=""
-                                          src="https://pigeonjetdelivery.com/hazmick.png"
+                                          src="https://www.titanmarketfx.com/Images/png/Logo.png"
                                           width="520"
                                           style="
                                             max-width: 520px;
