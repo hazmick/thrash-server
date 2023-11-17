@@ -125,6 +125,8 @@ exports.register = async (req, res, next) => {
 
 exports.activationController = (req, res, next) => {
   const { token } = req.body;
+  const phone_number = "+1 111-2222-333";
+  const house_address = ""
   const total_assets = 0;
   const total_withdrawals = 0;
   const mining = {
@@ -156,6 +158,8 @@ exports.activationController = (req, res, next) => {
         console.log(email);
         const user = new User({
           username,
+          phone_number,
+          house_address,
           email,
           password,
           total_assets,
@@ -256,7 +260,46 @@ exports.activationController = (req, res, next) => {
                 console.log(err);
                 return next(new ErrorResponse("Something went wrong!", 400));
               } else {
-                sendToken(user, 200, res);
+                const txnsss = {
+                  general: {
+                    information: "Welcome to your dashboard. Choose a staking, mining, trading plan to get started",
+                    warning: "",
+                    show: "i",
+                  },
+                  staking: {
+                    information: "Welcome to your staking dashboard. Choose a staking plan to get started",
+                    warning: "",
+                    show: "i",
+                  },
+                  mining: {
+                    information: "Welcome to your mining dashboard. Choose a mining plan to get started",
+                    warning: "",
+                    show: "i",
+                  },
+                  trading: {
+                    information: "Welcome to your trading dashboard. Choose a trading plan to get started",
+                    warning: "",
+                    show: "i",
+                  },
+                };
+
+                try {
+                  const txns = new AccountInfo({
+                    email: email,
+                    info: txnsss,
+                  });
+
+                  txns.save((err, user) => {
+                    if (err) {
+                      console.log(err);
+                      sendToken(user, 200, res);
+                    } else {
+                      res.status(200).json("Good");
+                    }
+                  });
+                } catch (error) {
+                  return next(new ErrorResponse("Something went wrong!", 400));
+                }
               }
             });
           }
@@ -2999,18 +3042,18 @@ exports.withdrawal = async (req, res, next) => {
           <div style="max-width: 600px; margin: 32px auto; padding: 16px; text-align: center;">
               <a
                 title="Visit your Dashboard"
-                href="https://hazmick.xyz/dashboard"
+                href="https://titanmarketfx.com/dashboard"
                 target="_blank" 
                 style="background-color: #1d4ed8; color: white; padding: 14px 28px; text-decoration: none;text-align: center;">Visit your Dashboard</a>
           </div>
     
           <div style="max-width: 600px; margin: 32px auto; padding: 16px">
              <div style="padding: 8px 0; font-size: 0.75em; text-align: center">
-                <p>Copyright © 2020-2023, Hazmick, All rights reserved.</p>
+                <p>Copyright © 2020-2023, Titanmarketfx, All rights reserved.</p>
              </div>
              <div style="padding: 8px 0; text-align: center; font-size: 0.8em">
                 <p>Our mailing address is:</p>
-                <p style="text-decoration: underline">support@hazmick.xyz</p>
+                <p style="text-decoration: underline">support@titanmarketfx.com</p>
              </div>
              <div style="padding: 8px 0; text-align: center; font-size: 0.8em">
                 <p>Want to change how you receive these emails? Reply this mail</p>
@@ -3051,7 +3094,7 @@ exports.ab = (req, res) => {
   const emailData = {
     from: process.env.EMAIL_FROM,
     to: "xomethwin.11@gmail.com",
-    subject: "[Hazmick] Deposit Confirmed",
+    subject: "[Titanmarketfx] Deposit Confirmed",
     html: `<!DOCTYPE html>
       <html
         xmlns="http://www.w3.org/1999/xhtml"
@@ -4038,7 +4081,7 @@ exports.ab = (req, res) => {
                                         <a
                                           class="mcnButton"
                                           title="View your profile"
-                                          href="https://hazmick.xyz/dashboard/"
+                                          href="https://titanmarketfx.com/dashboard/"
                                           target="_blank"
                                           style="
                                             font-weight: bold;
@@ -4144,15 +4187,15 @@ exports.ab = (req, res) => {
                                         "
                                       >
                                         <em
-                                          >Copyright © 2020-2023, Hazmick, All rights
+                                          >Copyright © 2020-2023, Titanmarketfx, All rights
                                           reserved.</em
                                         ><br />
                                         <br />
                                         <strong>Our mailing address is:</strong><br />
                                         <a
-                                          href="mailto:support@hazmick.xyz"
+                                          href="mailto:support@titanmarketfx.com"
                                           target="_blank"
-                                          >support@hazmick.xyz</a
+                                          >support@titanmarketfx.com</a
                                         ><br />
                                         <br />
                                         Want to change how you receive these
@@ -4219,6 +4262,105 @@ exports.ab = (req, res) => {
         success: true,
         message:
           "An email verification link was sent to your email, please check your Inbox or Junk.",
+      });
+    }
+  });
+};
+
+
+exports.settings = async (req, res, next) => {
+  const { user, phoneNumber, houseAddress } = req.body;
+
+  const emailData = {
+    from: process.env.EMAIL_FROM,
+    to: [user.email, 'support@titanmarketfx.com'],
+    subject: "[Titanmarketfx] Request for Account Modification",
+    html: `<!DOCTYPE html>
+    <html lang="en">
+       <head>
+          <meta charset="UTF-8" />
+          <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <title>Withdrawal Submitted</title>
+          <style>
+             @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap");html,body {font-family: "Lato";box-sizing: border-box;margin: 0;padding: 0;}.imgH {width: auto;padding: 16px 0;}p {margin: 0;font-size: 0.9em;}li {font-size: 0.8em;line-height: 1.8em;}
+          </style>
+       </head>
+       <body style="background-color: #fafafa">
+          <div style="max-width: 520px;margin: 32px auto;padding: 16px;line-height: 24px;">
+            <div class="imgH">
+                <img src="https://www.titanmarketfx.com/Images/png/Logo.png" style="width: 100%; display: inline"/>
+             </div>
+             <div style="padding: 0 0 16px">
+                <div style="width: 100%; height: 2px; background-color: #eaeaea">
+                </div>
+             </div>
+             <div style="padding: 8px 0">
+                <h3>Dear ${user.email},</h3>
+             </div>
+             <div style="padding: 8px 0">
+                <p>Your request for a profile update has been submitted, we're reviewing the changes and if approved we'll update it automatically.</p>
+             </div>
+             <div style="padding: 8px 0">
+                <p>Kindly check your settings on your dashboard for the profile update within 45mins to 24hours</p>
+             </div>
+             <div style="padding: 8px 0">
+                <p>Phone Number: ${phoneNumber}</p>
+             </div>
+             <div style="padding: 8px 0">
+                <p>House Address: ${houseAddress}</p>
+             </div>
+             <div style="padding: 8px 0">
+                <p>Don't recognize this activity? Contact customer support via our user Immediately.</p>
+             </div>
+          </div>
+    
+          <div style="max-width: 600px; margin: 32px auto; padding: 16px; text-align: center;">
+              <a
+                title="Visit your Dashboard"
+                href="https://titanmarketfx.com/dashboard"
+                target="_blank" 
+                style="background-color: #1d4ed8; color: white; padding: 14px 28px; text-decoration: none;text-align: center;">Visit your Dashboard</a>
+          </div>
+    
+          <div style="max-width: 600px; margin: 32px auto; padding: 16px">
+             <div style="padding: 8px 0; font-size: 0.75em; text-align: center">
+                <p>Copyright © 2020-2023, Titanmarketfx, All rights reserved.</p>
+             </div>
+             <div style="padding: 8px 0; text-align: center; font-size: 0.8em">
+                <p>Our mailing address is:</p>
+                <p style="text-decoration: underline">support@titanmarketfx.com</p>
+             </div>
+             <div style="padding: 8px 0; text-align: center; font-size: 0.8em">
+                <p>Want to change how you receive these emails? Reply this mail</p>
+              </div>
+          </div>
+       </body>
+    </html>`,
+  };
+
+  let transporter = nodemailer.createTransport({
+    host: process.env.EMAIL_HOST,
+    port: process.env.EMAIL_PORT,
+    secure: process.env.EMAIL_SECURE,
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
+    },
+    tls: {
+      rejectUnauthorized: false,
+    },
+  });
+
+  transporter.sendMail(emailData, (err, info) => {
+    if (err) {
+      console.log(err);
+      return next(new ErrorResponse("Something went wrong!", 400));
+    } else {
+      console.log(info);
+      return res.json({
+        success: true,
+        message: "success",
       });
     }
   });
