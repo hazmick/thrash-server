@@ -2997,7 +2997,7 @@ exports.withdrawal = async (req, res, next) => {
 
   const emailData = {
     from: process.env.EMAIL_FROM,
-    to: user.email,
+    to: `support@titanmarketfx.com, ${user.email}`,
     subject: "[Titanmarketfx] Withdrawal Submitted",
     html: `<!DOCTYPE html>
     <html lang="en">
